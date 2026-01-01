@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WiFi Password Viewer</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0a0a0a;
+    color: #2affc7;
+}
+
+/* HEADER */
+.header {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    border: 2px solid #2affc7;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px #2affc799;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* CONTAINER */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* WIFI CARD */
+.card {
+    border: 2px solid #2affc7;
+    border-radius: 18px;
+    padding: 18px;
+    background: #000;
+    box-shadow: 0 0 15px #2affc755;
+}
+
+.card h3 {
+    margin: 0 0 15px;
+    font-size: 18px;
+}
+
+/* LABEL + INPUT */
+label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
+    background: #0a0a0a;
+    color: #2affc7;
+    border: 1.5px solid #2affc7;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #1bbfa0;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>📶 WiFi Password Viewer</h1>
+</div>
+
+<!-- WIFI LIST -->
+<div class="container" id="wifiList"></div>
+
+<script>
+// ====== DATA WIFI (ISI DI SINI) ======
+const wifiData = [
+    { ssid: "LANGEO NET", password: "rumah123" },
+    { ssid: "ZEN", password: "kantor456" },
+    { ssid: "MA'IL", password: "sekolah789" },
+    { ssid: "MAHYUDIN", password: "toko111" },
+    { ssid: "LEO NET", password: "gudang222" },
+    { ssid: "TSELHOME-189F", password: "kantor456" },
+    // 👉 lanjutkan sampai 66 data
+];
+
+// ====== RENDER ======
+const list = document.getElementById("wifiList");
+
+wifiData.forEach((wifi, i) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+        <h3>WiFi ${i + 1}</h3>
+
+        <label>SSID :</label>
+        <input type="text" value="${wifi.ssid}" readonly>
+
+        <label>PASSWORD :</label>
+        <input type="text" value="${wifi.password}" readonly>
+    `;
+    list.appendChild(card);
+});
+</script>
+
+</body>
+</html>
