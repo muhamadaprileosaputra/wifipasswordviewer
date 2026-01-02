@@ -134,7 +134,10 @@ wifiData.forEach((wifi, i) => {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-        <h3>WiFi ${i + 1}</h3>
+<h3>
+  WiFi ${i + 1}
+  <span style="float:right;">DESA : JAGA BAYA</span>
+</h3>
 
         <label>SSID :</label>
         <input type="text" value="${wifi.ssid}" readonly>
